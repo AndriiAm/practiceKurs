@@ -12,11 +12,24 @@ let personalMovieDB = {
     privat: false
 };
 
-let watchedFilms = prompt("Какой фильм вы посмотрели последним?", ""),
-    filmRating = prompt("На сколько оцените его?",""),
-    watchedFilms1 = prompt("Какой фильм вы посмотрели последним?", ""),
-    filmRating1 = prompt("На сколько оцените его?","");
+for (let i = 0; i <= 1; i++) {
+    let a = prompt("Какой фильм вы посмотрели последним?", ""),
+        b = prompt("На сколько оцените его?","");
 
-personalMovieDB.movies[watchedFilms] = filmRating;
-personalMovieDB.movies[watchedFilms1] = filmRating1;
-console.log(personalMovieDB);
+    if (a != null && b != null && a != "" && b != "" && a.length < 50) {
+        personalMovieDB.movies[a] = b;
+    } else {
+        alert("Ошибка");
+        i--;
+    }
+
+}
+console.log(personalMovieDB.count);
+
+if (personalMovieDB["count"] < 10 && personalMovieDB["count"] > 0 ) {
+    alert("Вы посмотрели довольно мало фильмов");
+} else if (personalMovieDB["count"] >= 10 && personalMovieDB["count"] < 30) {
+    alert("Вы классический зритель");
+} else if (personalMovieDB["count"] >= 30) {
+    alert("Вы киноман");
+} else alert("Ошибка");
